@@ -14,7 +14,7 @@ public interface DeliveryChargeCalculator {
         private static final BigDecimal price_3 = new BigDecimal("30000");
         private static final BigDecimal price_10 = new BigDecimal("100000");
         private static final BigDecimal discount = new BigDecimal("1000");
-        private static final BigDecimal zero = new BigDecimal("0");
+
 
 
         @Override
