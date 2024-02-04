@@ -19,7 +19,7 @@
 
 
 ### 결과
-입력 : 
+입력 : <br>
 ![입력](https://github.com/827euni/oreumi-weekly/assets/108185369/89c31c5d-d8d4-43e9-a200-c7f0184d319d)
 
 출력 : <br>
