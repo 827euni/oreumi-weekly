@@ -4,6 +4,7 @@ public interface DeliveryChargeCalculator {
     BigDecimal getDeliveryCharge(Double weight, BigDecimal price);
 
 
+
     public class DeliveryCalculator implements DeliveryChargeCalculator {
         private static final BigDecimal price_under_3 = new BigDecimal("1000");
         private static final BigDecimal price_over_3_under_10 = new BigDecimal("5000");
@@ -13,6 +14,7 @@ public interface DeliveryChargeCalculator {
         private static final BigDecimal price_3 = new BigDecimal("30000");
         private static final BigDecimal price_10 = new BigDecimal("100000");
         private static final BigDecimal discount = new BigDecimal("1000");
+        private static final BigDecimal zero = new BigDecimal("0");
 
 
         @Override
@@ -33,11 +35,14 @@ public interface DeliveryChargeCalculator {
             if (price.compareTo(price_3)<0) {
                 charge = delivery;
             }
-            else if (price.compareTo(price_3) >= 0 && weightBig.compareTo(price_10) <= 0){
+            else if (price.compareTo(price_3) >= 0 && price.compareTo(price_10) < 0){
                 charge = delivery.subtract(discount);
             }
+            else if (price.compareTo(price_10) >= 0){
+                charge = delivery.subtract(delivery);
+            }
             else{
-                charge = new BigDecimal("0");
+                charge = delivery;
             }
             return charge;
         }
