@@ -1,9 +1,9 @@
 import java.math.BigDecimal;
 class ItemManger{
     public static void main(String[] args) {
-        Grocery grocery = new Grocery("수분크림", 70000, 8);
-        Beauty beauty = new Beauty("수분크림", 120000, 7.0);
-        LargeAppliance largeAppliance = new LargeAppliance("수분크림", 7000, 1.0);
+        Grocery grocery = new Grocery("피자", 70000, 8);
+        Beauty beauty = new Beauty("수분크림", 14000, 7.0);
+        LargeAppliance largeAppliance = new LargeAppliance("휴대폰", 1200000, 1.0);
 
         DeliveryChargeCalculator deliveryCalculator = new DeliveryChargeCalculator.DeliveryCalculator();
 
