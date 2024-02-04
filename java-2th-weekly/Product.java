@@ -5,9 +5,9 @@ public abstract class Product {
     private BigDecimal price;
     private Double weight;
 
-    public Product(String name, BigDecimal price, Double weight){
+    public Product(String name, int price, double weight){
         this.name = name;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.weight = weight;
     }
 
