@@ -17,7 +17,29 @@ public interface DeliveryChargeCalculator {
 
         @Override
         public BigDecimal getDeliveryCharge(Double weight, BigDecimal price) {
-            return null;
+            BigDecimal delivery;
+            BigDecimal charge;
+            BigDecimal weightBig = BigDecimal.valueOf(weight);
+            if (weightBig.compareTo(weight_3)<0){
+                delivery = price_under_3;
+            }
+            else if(weightBig.compareTo(weight_3) >= 0 && weightBig.compareTo(weight_10) <= 0){
+                delivery = price_over_3_under_10;
+            }
+            else{
+                delivery = price_over_10;
+            }
+
+            if (price.compareTo(price_3)<0) {
+                charge = delivery;
+            }
+            else if (price.compareTo(price_3) >= 0 && weightBig.compareTo(price_10) <= 0){
+                charge = delivery.subtract(discount);
+            }
+            else{
+                charge = new BigDecimal("0");
+            }
+            return charge;
         }
     }
 }
