@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 
-public abstract class Product {
+public abstract class Product implements Promotion {
     private String name;
     private BigDecimal price;
     private Double weight;
@@ -10,7 +10,8 @@ public abstract class Product {
         this.price = BigDecimal.valueOf(price);
         this.weight = weight;
     }
-
+    @Override
+    public abstract BigDecimal getDiscountAmount();
     public String getName(){
         return name;
     }
@@ -22,4 +23,5 @@ public abstract class Product {
     public Double getWeight() {
         return weight;
     }
+
 }

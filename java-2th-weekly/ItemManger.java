@@ -1,21 +1,13 @@
 import java.math.BigDecimal;
 class ItemManger{
     public static void main(String[] args) {
-        Grocery grocery = new Grocery("피자", 70000, 8);
-        Beauty beauty = new Beauty("수분크림", 14000, 7.0);
-        LargeAppliance largeAppliance = new LargeAppliance("휴대폰", 1200000, 1.0);
+        Product beauty = new Beauty("beauty", 30000, 2);
+        Product grocery = new Grocery("grocery", 20000, 3);
+        Product largeAppliance = new LargeAppliance("largeAppliance", 50000, 5);
 
-        DeliveryChargeCalculator deliveryCalculator = new DeliveryChargeCalculator.DeliveryCalculator();
-
-        BigDecimal GrocerydeliveryCharge = deliveryCalculator.getDeliveryCharge(grocery.getWeight(), grocery.getPrice());
-        BigDecimal BeautydeliveryCharge = deliveryCalculator.getDeliveryCharge(beauty.getWeight(), beauty.getPrice());
-        BigDecimal LargedeliveryCharge = deliveryCalculator.getDeliveryCharge(largeAppliance.getWeight(), largeAppliance.getPrice());
-        BigDecimal totalDeliveryCharge = GrocerydeliveryCharge.add(BeautydeliveryCharge).add(LargedeliveryCharge);
-
-        System.out.println("식료품 배송료: " + GrocerydeliveryCharge);
-        System.out.println("화장품 배송료: " + BeautydeliveryCharge);
-        System.out.println("대형가전 배송료: " + LargedeliveryCharge);
-        System.out.println("총 배송료: " + totalDeliveryCharge);
-
+        Cart cart = new Cart(new Product[] {beauty, grocery, largeAppliance});
+        BigDecimal totalDeliveryCharge = cart.calculateDeliveryCharge();
+        System.out.println(totalDeliveryCharge);    // 결과: 9000
     }
+
 }

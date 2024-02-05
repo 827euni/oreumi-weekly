@@ -7,7 +7,13 @@ public class Cart {
         this.products = products;
     }
 
-    public BigDecimal calculateDeliveryCharge(Double weight, BigDecimal price) {
+    public BigDecimal calculateDeliveryCharge() {
+        BigDecimal totalWeight = new BigDecimal("0");
+        BigDecimal totalPrice = new BigDecimal("0");
+        for (Product product : products) {
+            totalWeight = totalWeight.add(BigDecimal.valueOf(product.getWeight()));
+            totalPrice = totalPrice.add(product.getPrice().subtract(product.getDiscountAmount()));
+        }
         final BigDecimal price_under_3 = new BigDecimal("1000");
         final BigDecimal price_over_3_under_10 = new BigDecimal("5000");
         final BigDecimal price_over_10 = new BigDecimal("10000");
@@ -16,32 +22,31 @@ public class Cart {
         final BigDecimal price_3 = new BigDecimal("30000");
         final BigDecimal price_10 = new BigDecimal("100000");
         final BigDecimal discount = new BigDecimal("1000");
-        BigDecimal totalWeight = new BigDecimal("0");
         BigDecimal delivery;
         BigDecimal charge;
-        BigDecimal weightBig = BigDecimal.valueOf(weight);
 
-        if (weightBig.compareTo(weight_3)<0){
+
+        if (totalWeight.compareTo(weight_3)<0){
             delivery = price_under_3;
         }
-        else if(weightBig.compareTo(weight_3) >= 0 && weightBig.compareTo(weight_10) <= 0){
+        else if(totalWeight.compareTo(weight_3) >= 0 && totalWeight.compareTo(weight_10) < 0){
             delivery = price_over_3_under_10;
         }
         else{
             delivery = price_over_10;
         }
 
-        if (price.compareTo(price_3)<0) {
+        if (totalPrice.compareTo(price_3)<0) {
             charge = delivery;
         }
-        else if (price.compareTo(price_3) >= 0 && price.compareTo(price_10) < 0){
+        else if (totalPrice.compareTo(price_3) >= 0 && totalPrice.compareTo(price_10) < 0){
             charge = delivery.subtract(discount);
         }
-        else if (price.compareTo(price_10) >= 0){
+        else if (totalPrice.compareTo(price_10) >= 0){
             charge = delivery.subtract(delivery);
         }
         else{
-            charge = delivery;
+            charge = delivery.subtract(discount);
         }
         return charge;
     }
