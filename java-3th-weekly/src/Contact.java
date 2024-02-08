@@ -1,6 +1,6 @@
 public abstract class Contact {
-    private String name;
-    private String phoneNumber;
+    String name;
+    String phoneNumber;
 
     public Contact(String name, String phoneNumber){
         this.name = name;
@@ -14,5 +14,7 @@ public abstract class Contact {
     public String getPhoneNumber(){
         return phoneNumber;
     }
+
+    public abstract void print();
 
 }
