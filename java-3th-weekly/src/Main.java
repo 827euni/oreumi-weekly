@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         AddressBook addressBook = new AddressBook();
         int menu = 0;
-        while (true) {
+        while (menu != 5) {
             System.out.println("1. 비즈니스 연락처 추가");
             System.out.println("2. 개인 연락처 추가");
             System.out.println("3. 연락처 출력");
