@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        AddressBook addressBook = new AddressBook();
         int menu = 0;
         while (true) {
             System.out.println("1. 비즈니스 연락처 추가");
@@ -21,6 +22,7 @@ public class Main {
                     String phoneNum = sc.nextLine();
                     System.out.print("회사명을 입력하세요: ");
                     String companyName = sc.nextLine();
+                    AddressBook.addBusiness(name, phoneNum, companyName);
                     break;
                 case 2: //개인 연락처 추가
                     System.out.print("이름을 입력하세요: ");
@@ -29,10 +31,11 @@ public class Main {
                     phoneNum = sc.nextLine();
                     System.out.print("관계를 입력하세요: ");
                     String relationName = sc.nextLine();
+                    AddressBook.addPersonal(name, phoneNum, relationName);
                     break;
 
                 case 3: //연락처 출력
-                    //코드 짜기
+                    AddressBook.displayContacts();
                     break;
 
                 case 4: //연락처 검색

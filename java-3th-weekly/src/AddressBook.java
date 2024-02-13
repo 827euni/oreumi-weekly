@@ -1,15 +1,20 @@
 import java.util.ArrayList;
 
 public class AddressBook{
-    ArrayList<Contact> contacts;
+    static ArrayList<Contact> contacts;
 
     public AddressBook(){
         contacts = new ArrayList<>();
     }
-    public void addBusiness(String name, String phoneNumber, String company){
-
+    public static void addBusiness(String name, String phoneNumber, String company){
+        contacts.add(new BusinessContact(name, phoneNumber, company));
     }
-    public void displayContacts(){
+
+    public static void addPersonal(String name, String phoneNumber, String relationship){
+        contacts.add(new PersonalContact(name, phoneNumber, relationship));
+    }
+
+    public static void displayContacts(){
         if (contacts.isEmpty()){
             System.out.println("연락처를 찾을 수 없습니다.");
         }
@@ -20,7 +25,6 @@ public class AddressBook{
         }
     }
 
-    public void searchContact(String name){
-
+    public static void searchContact(String name){
     }
 }

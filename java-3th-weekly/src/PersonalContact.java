@@ -4,7 +4,7 @@ public class PersonalContact extends Contact{
         super(name, phoneNumber);
         this.relationship = relationship;
     }
-
+    @Override
     public void print(){
         System.out.println("이름: " + name + ", 전화번호: " + phoneNumber + ", 관계: " + relationship);
     }
