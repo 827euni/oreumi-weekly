@@ -26,5 +26,17 @@ public class AddressBook{
     }
 
     public static void searchContact(String name){
+        boolean search = false;
+
+        for (Contact c : contacts){
+            if (c.getName().equals(name)) {
+                c.print();
+                search = true;
+            }
+
+            if (!search){
+                System.out.println("연락처를 찾을 수 없습니다.");
+            }
+        }
     }
 }

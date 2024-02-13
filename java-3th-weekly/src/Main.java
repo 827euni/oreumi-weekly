@@ -39,7 +39,9 @@ public class Main {
                     break;
 
                 case 4: //연락처 검색
-                    //코드짜기
+                    System.out.print("검색할 이름을 입력하세요: ");
+                    name = sc.nextLine();
+                    AddressBook.searchContact(name);
                     break;
 
                 case 5: //종료
