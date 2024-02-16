@@ -25,7 +25,7 @@ public class Main {
         return answer;
     }
     public static void main(String[] args){
-        String s = "((())())";
+        String s = "";
         boolean result = solution(s);
         System.out.println(result);
     }
